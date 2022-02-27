@@ -1,0 +1,9 @@
+/node_modules/
+/.next/
+/out/
+/build/
+/storybook-static/
+.DS_Store
+coverage
+.github
+graphql-generated.tsx

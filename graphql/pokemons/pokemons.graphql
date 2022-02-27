@@ -1,10 +1,10 @@
 fragment Pokemon on pokemon_v2_pokemon {
-  id
-  name
+	id
+	name
 }
 
 query pokemonList($limit: Int = 20, $offset: Int = 0) {
-  pokemons: pokemon_v2_pokemon(limit: $limit, offset: $offset) {
-    ...Pokemon
-  }
+	pokemons: pokemon_v2_pokemon(limit: $limit, offset: $offset) {
+		...Pokemon
+	}
 }

@@ -1,0 +1,20 @@
+{
+	"tabWidth": 4,
+	"useTabs": true,
+	"singleQuote": true,
+	"proseWrap": "always",
+	"printWidth": 80,
+	"trailingComma": "es5",
+	"semi": true,
+	"importOrder": [
+		"^@/components/(.*)$",
+		"^@/graphql/(.*)$",
+		"^@/graphql-generated/(.*)$",
+		"^@/styles/(.*)$",
+		"^./[^styles](.*)$",
+		"^./styles(.*)$",
+		"^[./]"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
+}
