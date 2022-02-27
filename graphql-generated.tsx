@@ -51716,49 +51716,55 @@ export type Subscription_RootPokemon_V2_Versionname_By_PkArgs = {
   id: Scalars['Int'];
 };
 
-export type PokemonsQueryVariables = Exact<{
+export type PokemonFragment = { __typename?: 'pokemon_v2_pokemon', id: number, name: string };
+
+export type PokemonListQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type PokemonsQuery = { __typename?: 'query_root', pokemons: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, name: string }> };
+export type PokemonListQuery = { __typename?: 'query_root', pokemons: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, name: string }> };
 
-
-export const PokemonsDocument = gql`
-    query Pokemons($limit: Int = 20, $offset: Int = 0) {
-  pokemons: pokemon_v2_pokemon(limit: $limit, offset: $offset) {
-    id
-    name
-  }
+export const PokemonFragmentDoc = gql`
+    fragment Pokemon on pokemon_v2_pokemon {
+  id
+  name
 }
     `;
+export const PokemonListDocument = gql`
+    query pokemonList($limit: Int = 20, $offset: Int = 0) {
+  pokemons: pokemon_v2_pokemon(limit: $limit, offset: $offset) {
+    ...Pokemon
+  }
+}
+    ${PokemonFragmentDoc}`;
 
 /**
- * __usePokemonsQuery__
+ * __usePokemonListQuery__
  *
- * To run a query within a React component, call `usePokemonsQuery` and pass it any options that fit your needs.
- * When your component renders, `usePokemonsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `usePokemonListQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePokemonListQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = usePokemonsQuery({
+ * const { data, loading, error } = usePokemonListQuery({
  *   variables: {
  *      limit: // value for 'limit'
  *      offset: // value for 'offset'
  *   },
  * });
  */
-export function usePokemonsQuery(baseOptions?: Apollo.QueryHookOptions<PokemonsQuery, PokemonsQueryVariables>) {
+export function usePokemonListQuery(baseOptions?: Apollo.QueryHookOptions<PokemonListQuery, PokemonListQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PokemonsQuery, PokemonsQueryVariables>(PokemonsDocument, options);
+        return Apollo.useQuery<PokemonListQuery, PokemonListQueryVariables>(PokemonListDocument, options);
       }
-export function usePokemonsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PokemonsQuery, PokemonsQueryVariables>) {
+export function usePokemonListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PokemonListQuery, PokemonListQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PokemonsQuery, PokemonsQueryVariables>(PokemonsDocument, options);
+          return Apollo.useLazyQuery<PokemonListQuery, PokemonListQueryVariables>(PokemonListDocument, options);
         }
-export type PokemonsQueryHookResult = ReturnType<typeof usePokemonsQuery>;
-export type PokemonsLazyQueryHookResult = ReturnType<typeof usePokemonsLazyQuery>;
-export type PokemonsQueryResult = Apollo.QueryResult<PokemonsQuery, PokemonsQueryVariables>;
+export type PokemonListQueryHookResult = ReturnType<typeof usePokemonListQuery>;
+export type PokemonListLazyQueryHookResult = ReturnType<typeof usePokemonListLazyQuery>;
+export type PokemonListQueryResult = Apollo.QueryResult<PokemonListQuery, PokemonListQueryVariables>;

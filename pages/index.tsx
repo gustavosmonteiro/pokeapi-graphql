@@ -1,10 +1,13 @@
 import Head from "next/head";
-import type { NextPage } from "next";
-import { usePokemonsQuery } from "../graphql-generated";
 import Image from "next/image";
+import type { NextPage } from "next";
+import {
+  type PokemonFragment,
+  usePokemonListQuery,
+} from "../graphql-generated";
 
 const Home: NextPage = () => {
-  const { data, loading, error } = usePokemonsQuery({
+  const { data, loading, error } = usePokemonListQuery({
     variables: { limit: 151 },
   });
 
@@ -22,7 +25,7 @@ const Home: NextPage = () => {
       <main>
         <h1>Pokemons</h1>
         <ul>
-          {data?.pokemons.map((pokemon: any) => (
+          {data?.pokemons.map((pokemon: PokemonFragment) => (
             <li key={pokemon.id}>
               <Image
                 // src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}

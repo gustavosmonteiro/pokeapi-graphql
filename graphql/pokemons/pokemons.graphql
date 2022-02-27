@@ -1,6 +1,10 @@
-query Pokemons($limit: Int = 20, $offset: Int = 0) {
+fragment Pokemon on pokemon_v2_pokemon {
+  id
+  name
+}
+
+query pokemonList($limit: Int = 20, $offset: Int = 0) {
   pokemons: pokemon_v2_pokemon(limit: $limit, offset: $offset) {
-    id
-    name
+    ...Pokemon
   }
 }
