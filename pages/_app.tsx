@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 
 import client from '@/graphql/apolloClient';
 
-import '@/styles/globals.css';
+import '@/styles/index.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
