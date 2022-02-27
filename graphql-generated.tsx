@@ -51716,15 +51716,18 @@ export type Subscription_RootPokemon_V2_Versionname_By_PkArgs = {
   id: Scalars['Int'];
 };
 
-export type PokemonsQueryVariables = Exact<{ [key: string]: never; }>;
+export type PokemonsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+}>;
 
 
-export type PokemonsQuery = { __typename?: 'query_root', pokemon_v2_pokemon: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, name: string }> };
+export type PokemonsQuery = { __typename?: 'query_root', pokemons: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, name: string }> };
 
 
 export const PokemonsDocument = gql`
-    query Pokemons {
-  pokemon_v2_pokemon {
+    query Pokemons($limit: Int = 20, $offset: Int = 0) {
+  pokemons: pokemon_v2_pokemon(limit: $limit, offset: $offset) {
     id
     name
   }
@@ -51743,6 +51746,8 @@ export const PokemonsDocument = gql`
  * @example
  * const { data, loading, error } = usePokemonsQuery({
  *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
  *   },
  * });
  */
