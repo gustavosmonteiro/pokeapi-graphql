@@ -1,10 +1,13 @@
-import { gql } from "@apollo/client";
-import type { NextPage } from "next";
 import Head from "next/head";
-import client from "../apolloClient";
+import type { NextPage } from "next";
+import { usePokemonsQuery } from "../graphql-generated";
 
-// TODO: Add type definitions
-const Home: NextPage<{ pokemons: any[] }> = ({ pokemons }) => {
+const Home: NextPage = () => {
+  const { data: pokemons, loading, error } = usePokemonsQuery();
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
   return (
     <>
       <Head>
@@ -16,7 +19,7 @@ const Home: NextPage<{ pokemons: any[] }> = ({ pokemons }) => {
       <main>
         <h1>Pokemons</h1>
         <ul>
-          {pokemons.map((pokemon: any) => (
+          {pokemons?.pokemon_v2_pokemon.map((pokemon: any) => (
             <li key={pokemon.id}>{pokemon.name}</li>
           ))}
         </ul>
@@ -24,23 +27,5 @@ const Home: NextPage<{ pokemons: any[] }> = ({ pokemons }) => {
     </>
   );
 };
-
-export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-      query Pokemons {
-        pokemon_v2_pokemon {
-          id
-          name
-        }
-      }
-    `,
-  });
-  return {
-    props: {
-      pokemons: data.pokemon_v2_pokemon,
-    },
-  };
-}
 
 export default Home;
