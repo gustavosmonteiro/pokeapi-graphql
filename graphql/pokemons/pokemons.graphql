@@ -1,6 +1,19 @@
+fragment PokemonType on pokemon_v2_type {
+	name
+}
+
+fragment PokemonTypes on pokemon_v2_pokemontype {
+	type: pokemon_v2_type {
+		...PokemonType
+	}
+}
+
 fragment Pokemon on pokemon_v2_pokemon {
 	id
 	name
+	types: pokemon_v2_pokemontypes {
+		...PokemonTypes
+	}
 }
 
 query pokemonList($limit: Int = 20, $offset: Int = 0) {

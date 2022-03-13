@@ -51716,7 +51716,11 @@ export type Subscription_RootPokemon_V2_Versionname_By_PkArgs = {
   id: Scalars['Int'];
 };
 
-export type PokemonFragment = { __typename?: 'pokemon_v2_pokemon', id: number, name: string };
+export type PokemonTypeFragment = { __typename?: 'pokemon_v2_type', name: string };
+
+export type PokemonTypesFragment = { __typename?: 'pokemon_v2_pokemontype', type?: { __typename?: 'pokemon_v2_type', name: string } | null };
+
+export type PokemonFragment = { __typename?: 'pokemon_v2_pokemon', id: number, name: string, types: Array<{ __typename?: 'pokemon_v2_pokemontype', type?: { __typename?: 'pokemon_v2_type', name: string } | null }> };
 
 export type PokemonListQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -51724,14 +51728,29 @@ export type PokemonListQueryVariables = Exact<{
 }>;
 
 
-export type PokemonListQuery = { __typename?: 'query_root', pokemons: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, name: string }> };
+export type PokemonListQuery = { __typename?: 'query_root', pokemons: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, name: string, types: Array<{ __typename?: 'pokemon_v2_pokemontype', type?: { __typename?: 'pokemon_v2_type', name: string } | null }> }> };
 
+export const PokemonTypeFragmentDoc = gql`
+    fragment PokemonType on pokemon_v2_type {
+  name
+}
+    `;
+export const PokemonTypesFragmentDoc = gql`
+    fragment PokemonTypes on pokemon_v2_pokemontype {
+  type: pokemon_v2_type {
+    ...PokemonType
+  }
+}
+    ${PokemonTypeFragmentDoc}`;
 export const PokemonFragmentDoc = gql`
     fragment Pokemon on pokemon_v2_pokemon {
   id
   name
+  types: pokemon_v2_pokemontypes {
+    ...PokemonTypes
+  }
 }
-    `;
+    ${PokemonTypesFragmentDoc}`;
 export const PokemonListDocument = gql`
     query pokemonList($limit: Int = 20, $offset: Int = 0) {
   pokemons: pokemon_v2_pokemon(limit: $limit, offset: $offset) {

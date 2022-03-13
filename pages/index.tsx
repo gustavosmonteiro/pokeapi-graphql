@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import PokemonList from '@/components/PokemonList';
+import PokemonList from '@/components/pokemon-list';
 
 import { usePokemonListQuery } from '@/graphql-generated';
 
