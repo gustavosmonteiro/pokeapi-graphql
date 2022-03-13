@@ -8,8 +8,9 @@
 	"semi": true,
 	"importOrder": [
 		"^@/components/(.*)$",
+		"^@/utils/(.*)$",
 		"^@/graphql/(.*)$",
-		"^@/graphql-generated/(.*)$",
+		"^@/graphql-generated",
 		"^@/styles/(.*)$",
 		"^./[^styles](.*)$",
 		"^./styles(.*)$",

@@ -1,8 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 
-import { PokemonFragment, usePokemonListQuery } from '@/graphql-generated';
+import PokemonList from '@/components/PokemonList';
+
+import { usePokemonListQuery } from '@/graphql-generated';
+
+import { StyledH1 } from '@/styles/pages';
 
 const Home: NextPage = () => {
 	const { data, loading, error } = usePokemonListQuery({
@@ -24,21 +27,8 @@ const Home: NextPage = () => {
 			</Head>
 
 			<main>
-				<h1>Pokemons</h1>
-				<ul>
-					{data?.pokemons.map((pokemon: PokemonFragment) => (
-						<li key={pokemon.id}>
-							<Image
-								// src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
-								src={`https://img.pokemondb.net/artwork/large/${pokemon.name}.jpg`}
-								alt={pokemon.name}
-								width={100}
-								height={100}
-							/>
-							{pokemon.name}
-						</li>
-					))}
-				</ul>
+				<StyledH1>Pokemons</StyledH1>
+				{data?.pokemons && <PokemonList pokemons={data?.pokemons} />}
 			</main>
 		</>
 	);
