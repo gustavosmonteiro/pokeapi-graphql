@@ -1,6 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with
 [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Deployed with [Vercel](https://vercel.com/) at
+[https://gustavosmonteiro-pokeapi-graphql.vercel.app/](https://gustavosmonteiro-pokeapi-graphql.vercel.app/).
+
 ## Motivation
 
 This project was created to practice consuming a GraphQL API with Next.js.
