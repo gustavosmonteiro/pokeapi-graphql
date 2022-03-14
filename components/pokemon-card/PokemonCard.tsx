@@ -16,7 +16,7 @@ const PokemonCard: VFC<PokemonCardProps> = ({ pokemon }) => (
 	<>
 		<Image
 			src={getPokemonImg(pokemon.name)}
-			alt={pokemon.name}
+			alt={'Image of pokemon ' + pokemon.name}
 			width={100}
 			height={100}
 		/>

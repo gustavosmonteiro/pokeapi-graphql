@@ -13,8 +13,9 @@ The chosen API was the GraphQL beta version of
 
 Stack used: [Next.js](https://nextjs.org/), [Typescript](https://nextjs.org/),
 [GraphQL](https://graphql.org/), [Apollo](https://www.apollographql.com/),
-[GraphQL Code Generator](https://www.graphql-code-generator.com/) and
-[Styled-Components](https://www.styled-components.com/).
+[GraphQL Code Generator](https://www.graphql-code-generator.com/),
+[Styled-Components](https://www.styled-components.com/) and
+[Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
 
 ## Running locally
 
