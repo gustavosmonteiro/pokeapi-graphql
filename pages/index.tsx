@@ -8,8 +8,8 @@ import { usePokemonListQuery } from '@/graphql-generated';
 import { StyledH1 } from '@/styles/pages';
 
 const Home: NextPage = () => {
-	const { data, loading, error } = usePokemonListQuery({
-		variables: { limit: 151 },
+	const { data, loading, error, fetchMore } = usePokemonListQuery({
+		variables: { limit: 20 },
 	});
 
 	if (loading) return <p>Loading...</p>;
@@ -29,6 +29,18 @@ const Home: NextPage = () => {
 			<main>
 				<StyledH1>Pokemons</StyledH1>
 				{data?.pokemons && <PokemonList pokemons={data?.pokemons} />}
+
+				<button
+					onClick={() =>
+						fetchMore({
+							variables: {
+								offset: data?.pokemons.length,
+							},
+						})
+					}
+				>
+					Load More
+				</button>
 			</main>
 		</>
 	);
