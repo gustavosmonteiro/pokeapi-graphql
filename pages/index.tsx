@@ -31,7 +31,7 @@ const Home: NextPage = () => {
 				variables: {
 					offset: data?.pokemons.length,
 				},
-			});
+			}).catch((e) => console.error(e));
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isVisible]);
