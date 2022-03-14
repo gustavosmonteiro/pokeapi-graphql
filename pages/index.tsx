@@ -42,11 +42,8 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Learning Graphql with PokeAPI</title>
-				<meta
-					name="description"
-					content="Learning Graphql with PokeAPI"
-				/>
+				<title>GraphQL PokeAPI</title>
+				<meta name="description" content="GraphQL PokeAPI" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 

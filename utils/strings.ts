@@ -3,5 +3,5 @@ export const capitalizeFirstLetter = (string: string) => {
 };
 
 export const formatGender = (string: string) => {
-	return string.replace('-m', ' ♂').replace('-f', ' ♀');
+	return string.replace(/-m$/, ' ♂').replace(/-f$/, ' ♀');
 };
