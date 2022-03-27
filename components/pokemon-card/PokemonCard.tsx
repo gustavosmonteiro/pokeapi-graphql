@@ -19,6 +19,8 @@ const PokemonCard: VFC<PokemonCardProps> = ({ pokemon }) => (
 			alt={'Image of pokemon ' + pokemon.name}
 			width={100}
 			height={100}
+			// using unoptimized image just to avoid consuming all the vercel free tier quota
+			unoptimized={true}
 		/>
 		<StyledP>{formatPokemonName(pokemon.name)}</StyledP>
 		<PokemonTypesList pokemon={pokemon} />
